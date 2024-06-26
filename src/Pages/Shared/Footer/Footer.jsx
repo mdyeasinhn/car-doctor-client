@@ -2,13 +2,13 @@ import logo from '../../../assets/logo.svg';
 
 const Footer = () => {
     return (
-        <footer className="footer p-10 bg-base-200 text-base-content">
+        <footer className="footer p-10  bg-black text-white mt-20">
             <aside>
                 <img src={logo} alt="" />
-                <p>Cars Doctor Industries Ltd.<br />Providing reliable tech since 1992</p>
+                <p className='w-[240px]'>Edwin Diaz is a software and web technologies engineer, a life coach trainer who is also a serial .  </p>
             </aside>
             <nav>
-                <h6 className="footer-title">Services</h6>
+                <h6 className="footer-title">About</h6>
                 <a className="link link-hover">Branding</a>
                 <a className="link link-hover">Design</a>
                 <a className="link link-hover">Marketing</a>
@@ -22,7 +22,7 @@ const Footer = () => {
                 <a className="link link-hover">Press kit</a>
             </nav>
             <nav>
-                <h6 className="footer-title">Legal</h6>
+                <h6 className="footer-title">Support</h6>
                 <a className="link link-hover">Terms of use</a>
                 <a className="link link-hover">Privacy policy</a>
                 <a className="link link-hover">Cookie policy</a>

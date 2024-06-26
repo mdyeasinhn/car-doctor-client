@@ -7,11 +7,13 @@ import Checkout from "../Pages/Checkout/Checkout"
 import BookService from "../Pages/BookService/BookService";
 import Bookings from "../Pages/Bookings/Bookings";
 import PrivateRoute from "./PrivateRoute";
+import ErrorPage from "../Pages/EoorPage/ErrorPage";
 
 const router = createBrowserRouter([
     {
       path: "/",
       element: <Main></Main>,
+      errorElement:<ErrorPage></ErrorPage>,
       children: [
         {
             path: "/",
@@ -27,7 +29,7 @@ const router = createBrowserRouter([
         },
         {
           path: '/book/:id',
-          element: <BookService></BookService>,
+          element: <PrivateRoute><BookService></BookService></PrivateRoute>,
           loader:({params})=> fetch(`http://localhost:5000/services/${params.id}`)
         },
         {
