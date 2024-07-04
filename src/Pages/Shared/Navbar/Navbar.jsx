@@ -39,7 +39,7 @@ const Navbar = () => {
             <div className="navbar-end space-x-3">
                 {
                     user?.email ? <>
-                        <li className=""><Link to='/bookings'><button><img className="text-orange-500" src={cart} alt="" /></button></Link></li>
+                        <a className=""><Link to='/bookings'><button><img className="text-orange-500" src={cart} alt="" /></button></Link></a>
                         <li className="btn btn-outline btn-error"> <button onClick={handleLogOut}>Log out</button></li>
                     </> :
                         <li className="btn btn-outline btn-error"><Link to='/login'><a>Login</a></Link></li>

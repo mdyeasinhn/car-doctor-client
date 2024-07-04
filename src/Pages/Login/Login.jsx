@@ -1,11 +1,17 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import img from '../../assets/images/login/login.svg'
 import { useContext } from 'react';
 import { AuthContext } from '../../Providers/AuthProvider';
+import axios from 'axios';
+import toast from 'react-hot-toast';
 
 const Login = () => {
-    const {signIn} = useContext(AuthContext);
-    const handleLoign = e =>{
+    const { signIn } = useContext(AuthContext);
+
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    const handleLoign = e => {
         e.preventDefault();
         const form = e.target;
         const name = form.name.value;
@@ -14,13 +20,23 @@ const Login = () => {
         console.log(name, email, password);
 
         signIn(email, password)
-        .then(res => {
-            const user = res.user;
-            console.log(user);
-        })
-        .catch(error =>{
-            console.error(error);
-        })
+            .then(res => {
+                const loggedInUser = res.user;
+                console.log(loggedInUser);
+                const user = { email };
+                // get access token
+                axios.post('http://localhost:5000/jwt', user, { withCredentials: true })
+                    .then(res => {
+                        console.log(res.data);
+                        if (res.data.success) {
+                            navigate(location?.state ? location?.state : '/')
+                            toast.success('Successfully created!');
+                        }
+                    })
+            })
+            .catch(error => {
+                console.error(error);
+            })
     }
     return (
         <div className="hero min-h-screen bg-base-200">

@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import app from "../Firebase/Firebase.config";
+import axios from "axios";
 
 export const AuthContext = createContext();
 const auth = getAuth(app);
@@ -28,6 +29,12 @@ const AuthPorvider = ({ children }) => {
             setUser(currentUser)
             console.log('Current User', currentUser);
             setLoading(false);
+            if(currentUser){
+                axios.post()
+                .then(res =>{
+                    console.log(res.data);
+                })
+            }
         });
         return ()=>{
             return unsubscribe();
